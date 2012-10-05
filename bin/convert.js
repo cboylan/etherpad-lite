@@ -52,9 +52,9 @@ async.series([
   //get all padids out of the database...
   function(callback)
   {
-    log("get all padIds out of the database...");
+    log("get padIds out of the database...");
     
-    etherpadDB.query("SELECT ID FROM PAD_META", [], function(err, _padIDs)
+    etherpadDB.query("SELECT localPadId FROM pro_padmeta WHERE domainId=?", [settings.domainId], function(err, _padIDs)
     {
       padIDs = _padIDs;
       callback(err);
